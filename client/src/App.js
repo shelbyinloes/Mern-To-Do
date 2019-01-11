@@ -104,6 +104,10 @@ class App extends Component {
     const { data } = this.state;
     return (
       <div>
+
+
+
+        {/* show db entries */}
         <ul>
           {data.length <= 0
             ? "NO DB ENTRIES YET"
@@ -115,6 +119,10 @@ class App extends Component {
                 </li>
               ))}
         </ul>
+
+
+
+      {/* add an input */}
         <div style={{ padding: "10px" }}>
           <input
             type="text"
@@ -126,6 +134,11 @@ class App extends Component {
             ADD
           </button>
         </div>
+
+
+
+
+      {/* delete an input */}
         <div style={{ padding: "10px" }}>
           <input
             type="text"
@@ -137,6 +150,10 @@ class App extends Component {
             DELETE
           </button>
         </div>
+
+
+
+      {/* update an imput */}
         <div style={{ padding: "10px" }}>
           <input
             type="text"
@@ -158,6 +175,10 @@ class App extends Component {
             UPDATE
           </button>
         </div>
+
+
+
+
       </div>
     );
   }
