@@ -64,10 +64,10 @@ class App extends Component {
 
   // our delete method that uses our backend api 
   // to remove existing database information
-  deleteFromDB = idTodelete => {
+  deleteFromDB = idToDelete => {
     let objIdToDelete = null;
     this.state.data.forEach(dat => {
-      if (dat.id == idTodelete) {
+      if (dat.id === idToDelete) {
         objIdToDelete = dat._id;
       }
     });
@@ -85,7 +85,7 @@ class App extends Component {
   updateDB = (idToUpdate, updateToApply) => {
     let objIdToUpdate = null;
     this.state.data.forEach(dat => {
-      if (dat.id == idToUpdate) {
+      if (dat.id === idToUpdate) {
         objIdToUpdate = dat._id;
       }
     });
@@ -112,17 +112,21 @@ class App extends Component {
           {data.length <= 0
             ? "NO DB ENTRIES YET"
             : data.map(dat => (
-                <li style={{ padding: "10px" }} key={data.message}>
-                  <span style={{ color: "gray" }}> id: </span> {dat.id} <br />
-                  <span style={{ color: "gray" }}> data: </span>
-                  {dat.message}
+                <li style={{ padding: "10px", listStyle: "none" }} key={data.message}>
+                  <button 
+                    onClick={(e) => {
+                      this.setState({ idToDelete: dat.id }); 
+                      this.deleteFromDB(this.state.idToDelete);}}
+                  >Delete</button>
+                  {/* <span style={{ color: "gray" }}> id: </span> {dat.id} <br /> */}
+                  <span style={{ padding: '10px' }}> {dat.message} </span>
                 </li>
               ))}
         </ul>
 
 
 
-      {/* add an input */}
+      {/* add something to the list */}
         <div style={{ padding: "10px" }}>
           <input
             type="text"
@@ -139,7 +143,7 @@ class App extends Component {
 
 
       {/* delete an input */}
-        <div style={{ padding: "10px" }}>
+        {/* <div style={{ padding: "10px" }}>
           <input
             type="text"
             style={{ width: "200px" }}
@@ -149,7 +153,7 @@ class App extends Component {
           <button onClick={() => this.deleteFromDB(this.state.idToDelete)}>
             DELETE
           </button>
-        </div>
+        </div> */}
 
 
 
